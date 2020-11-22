@@ -105,6 +105,8 @@ while true; do
         mv ${user}.pub id_rsa.pub
         cat id_rsa.pub > authorized_keys
         chown ${user}:${user} id_rsa id_rsa.pub authorized_keys
+        sed -i "s/root/${user}/g" id_rsa.pub
+        sed -i "s/root/${user}/g" authorized_keys
         sed -i "s/.*PubkeyAuthentication.*/PubkeyAuthentication yes/g" $SSH_CONF
         sed -i "s/.*AuthorizedKeysFile.*/AuthorizedKeysFile .ssh\/authorized_keys/g" $SSH_CONF
         echo -e "\n"
@@ -177,7 +179,22 @@ while true; do
             elif [ "$response" = "n" ]; then break
             fi
         done
+        echo -e "\nUFW Activation ..."
+        sleep 3
         ufw enable
+        break
+    elif [ "$response" = "n" ]; then break
+    fi
+done
+
+echo -e "\n******************************************************************************\n"
+
+while true; do
+    read -p "Enable unattended upgrades ? " response
+    if [ "$response" = "y" ]; then
+        sudo apt-get install unattended-upgrades apt-listchanges -y
+        echo 'APT::Periodic::Update-Package-Lists "1";' >> /etc/apt/apt.conf.d/20auto-upgrades
+        echo 'APT::Periodic::Unattended-Upgrade "1";' >> /etc/apt/apt.conf.d/20auto-upgrades
         break
     elif [ "$response" = "n" ]; then break
     fi
