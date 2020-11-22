@@ -10,6 +10,7 @@ This script is intended to be used on a fresh Debian 10 installation. His main p
 - Secure SSH
 - Disable IPv6
 - Install UFW firewall
+- Install Unattended Upgrades
 
 ## How to use it ?
 
