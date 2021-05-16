@@ -1,6 +1,6 @@
 # Debian Secure Configuration
 
-This script is intended to be used on a fresh Debian 10 installation. His main purpose is to easy secure the OS.
+This script is intended to be used on a fresh Debian 10 installation. His main purpose is to easily secure the OS.
 
 ## What does the script do ?
 
@@ -14,7 +14,7 @@ This script is intended to be used on a fresh Debian 10 installation. His main p
 
 ## How to use it ?
 
-```sh
+```
 $ su root
 # cd /tmp
 # wget https://raw.githubusercontent.com/Ph4ntom01/Debian-Secure-Config/main/debian_secure_config.sh
@@ -24,6 +24,8 @@ $ su root
 
 ## SSH key
 
-Use a FTP software (ex: FileZilla) to get the *id_rsa* file (the private key, located at */home/[user]/.ssh/id_rsa*).
+To secure your server, either copy the private key to the remote client by using the script, or follow theses steps :
 
-To stop bots connection attemps (if you use a VPS), set **PasswordAuthentication no** into */etc/ssh/sshd_config*.
+- First, make sure you copy you private key (located at _/home/[user]/.ssh/[user]_) to your client with a FTP software (ex: FileZilla).
+- Second, uncomment and set **PasswordAuthentication** to **no** in the _/etc/ssh/sshd_config_ file.
+- Third, remove the private key from the server.
