@@ -15,11 +15,11 @@ This script is intended to be used on a fresh Debian 10 installation. His main p
 ## How to use it ?
 
 ```sh
-$ su -
-$ cd /tmp
-$ wget https://raw.githubusercontent.com/Ph4ntom01/Debian-Secure-Config/main/debian_secure_config.sh
-$ chmod +x debian_secure_config.sh
-$ ./debian_secure_config.sh
+$ su root
+# cd /tmp
+# wget https://raw.githubusercontent.com/Ph4ntom01/Debian-Secure-Config/main/debian_secure_config.sh
+# chmod +x debian_secure_config.sh
+# bash debian_secure_config.sh
 ```
 
 ## SSH key
